@@ -1,0 +1,28 @@
+#heading{
+    text-align: center;
+    color: cyan;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+    #content{
+        text-align: center;
+        font-size: 5rem;
+        color: cornflowerblue;
+    }
+    #lap_content{
+        text-align: center;
+        align-items: center;
+        background-color: bisque;
+        color: coral;
+        border-radius: 20%;
+        width: 100vw;
+        height: 45vh;
+    
+    }
+    #btn{
+        color: blue;
+        background-color: aqua;
+        border-radius: 30%;
+        width: 100px;
+        height: 50px;
+       margin-left: 24%;
+    }

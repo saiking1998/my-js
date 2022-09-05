@@ -1,0 +1,10 @@
+#heading{
+text-align: center;
+color: cyan;
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#content{
+    text-align: center;
+    font-size: 5rem;
+    color: cornflowerblue;
+}
