@@ -2,6 +2,40 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 function Navbar(props) {
+  
+  const Enablepurplemode = () =>{
+     if(document.body.style.backgroundColor !== 'purple'){
+      document.body.style.backgroundColor = 'purple'
+     }
+     else{
+      document.body.style.backgroundColor = 'white'
+     }
+  }
+  const Enableredmode = () =>{
+    if(document.body.style.backgroundColor !== 'red'){
+      document.body.style.backgroundColor = 'red'
+     }
+     else{
+      document.body.style.backgroundColor = 'white'
+     }
+  }
+  const Enableyellowmode = () =>{
+    if(document.body.style.backgroundColor !== 'yellow'){
+      document.body.style.backgroundColor = 'yellow'
+     }
+     else{
+      document.body.style.backgroundColor = 'white'
+     }
+  }
+  const Enablebluemode = () =>{
+    if(document.body.style.backgroundColor !== 'blue'){
+      document.body.style.backgroundColor = 'blue'
+      document.body.style.color = 'white'
+     }
+     else{
+      document.body.style.backgroundColor = 'white'
+     }
+  }
   return (
     <div>
       <nav className={`navbar navbar-expand-lg navbar-${props.darkmode} bg-${props.darkmode}`}>
@@ -25,6 +59,13 @@ function Navbar(props) {
         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
         <button className="btn btn-outline-success" type="submit">Search</button>
       </form> */}
+      <button id='purple' className='m-auto' onClick={Enablepurplemode} style={{backgroundColor:'purple',color :'white'}}>purple mode</button>
+      <button id='red' className='m-auto'onClick={Enableredmode}  style={{backgroundColor:'red'}}>red mode</button>
+
+      <button id='yellow' className='m-auto'onClick={Enableyellowmode}  style={{backgroundColor:'yellow'}}>yellow mode</button>
+
+      <button id='blue' className='m-auto' onClick={Enablebluemode} style={{backgroundColor:'blue',color :'white'}}>blue mode</button>
+
       <div className={`form-check form-switch text-${props.darkmode ==='light' ? 'dark':'light'}`}>
   <input className="form-check-input" onClick={props.togglemode} type="checkbox" role="switch" id="flexSwitchCheckDefault" />
   <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Dark Mode</label>
