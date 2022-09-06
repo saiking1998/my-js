@@ -40,7 +40,9 @@ function App() {
     <>
       <Router> 
     <Navbar title = "textutils"  darkmode = {darkmode} togglemode={togglemode}/>
+    <div style={{height:'50px'}}>
     <Alert alert={alert}/>
+    </div>
     <div className="container my-3">
       
          <Routes>

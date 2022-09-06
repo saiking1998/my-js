@@ -19,9 +19,7 @@ export default function TextForm(props) {
     props.showalert("Text has been cleared","warning")
     }
     const handlecopy=() =>{
-      var text = document.getElementById('exampleFormControlTextarea1')
-      text.select();
-      navigator.clipboard.writeText(text.value);
+      navigator.clipboard.writeText(text);
       document.getSelection().removeAllRanges();
       props.showalert("text has been copied","success")
     }
@@ -48,7 +46,7 @@ props.showalert("Extra spaces are removed","success")
 </div>
 <div className={`container my-3 text-${props.darkmode === 'light'?'dark':'light'}`}>
     <h1>Your text summanry</h1>
-    <p>{text.length === 0? '0':text.split(" ").filter((ele)=>{return ele.length!==0 }).length} words and {text.length} characters</p>
+    <p>{text.length === 0? '0':text.split(/\s+/).filter((ele)=>{return ele.length!==0 }).length} words and {text.length} characters</p>
     <p> it can be read in {0.008 * text.split(" ").length}  </p>
 </div>
 <div className="container">
