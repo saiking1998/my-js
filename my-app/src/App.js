@@ -13,15 +13,20 @@ function App() {
         msg :message,
         type : type
        })
+       setTimeout(()=>{
+       setalert ( null);
+       },1500)
   }
   const togglemode =() =>{
     if(darkmode === 'light'){
       setdarkmode('dark')
       document.body.style.backgroundColor = '#375572';
+      showalert("darkmode has been enabled","success")
     }
     else{
       setdarkmode('light')
       document.body.style.backgroundColor='white';
+      showalert("lightmode has been enabled","success")
     }
 
   }
@@ -29,9 +34,9 @@ function App() {
     <>
        
     <Navbar title = "textutils"  darkmode = {darkmode} togglemode={togglemode}/>
-    <Alert alert="this is a sample alert"/>
+    <Alert alert={alert}/>
     <div className="container my-3">
-    <TextForm  heading = "Eneter your text to Analyze" darkmode = {darkmode}/>
+    <TextForm  showalert={showalert} heading = "Eneter your text to Analyze" alert ={alert} darkmode = {darkmode}/>
       <About darkmode = {darkmode}/>
    
     
