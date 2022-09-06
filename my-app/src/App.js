@@ -7,9 +7,9 @@ import Alert from './components/Alert';
 import React from "react";
 import {
   BrowserRouter as Router,
-  Switch,
   Route,
-  Link
+  Routes
+ 
 } from "react-router-dom";
 function App() {
   const[darkmode,setdarkmode] = useState('light');
@@ -38,25 +38,26 @@ function App() {
   }
   return (
     <>
-       
+      <Router> 
     <Navbar title = "textutils"  darkmode = {darkmode} togglemode={togglemode}/>
     <Alert alert={alert}/>
     <div className="container my-3">
-      <Router>
-         <Switch>
-          <Route path="/about">
-          <About darkmode = {darkmode}/>
-          </Route>
-          
-          <Route path="/">
-          <TextForm  showalert={showalert} heading = "Eneter your text to Analyze" alert ={alert} darkmode = {darkmode}/>
-          </Route>
-          </Switch>
+      
+         <Routes>
+               <Route exact path="/About" element={<About darkmode={darkmode}/>}>
+                
+                </Route>
+            
+                <Route exact path="/" element={<TextForm  showalert={showalert} heading = "Eneter your text to Analyze" alert ={alert} darkmode = {darkmode}/>}>
+              
+             </Route>
+           </Routes>
+           </div>
         </Router>
       
    
     
-    </div>
+
  
     {/* <Navbar  /> */}
     </>

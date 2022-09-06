@@ -22,6 +22,7 @@ export default function TextForm(props) {
       var text = document.getElementById('exampleFormControlTextarea1')
       text.select();
       navigator.clipboard.writeText(text.value);
+      document.getSelection().removeAllRanges();
       props.showalert("text has been copied","success")
     }
     const ExtraSpace=() =>{
@@ -39,15 +40,15 @@ props.showalert("Extra spaces are removed","success")
 <textarea className="form-control" id="exampleFormControlTextarea1" style={{backgroundColor : props.darkmode === 'light'?'white':'gray', color : props.darkmode === 'light'?'black':'white'}} onChange={ForTextCahnge} value={text} rows="8"></textarea>
 </div>
 <div className="container">
-<button className="btn btn-primary mx-1 my-2 col-md-2" onClick={ForUpperCase} >convert to upper case</button>
-<button className="btn btn-primary mx-1 my-2 col-md-2" onClick={ForLowerCase} >convert to lower case</button>
-<button className="btn btn-primary  mx-1 my-2 col-md-2" onClick={ForClear} >Clear</button>
-<button className="btn btn-primary mx-1 my-2 col-md-2" onClick={handlecopy} >Copy</button>
-<button className="btn btn-primary mx-1 my-2 col-md-2" onClick={ExtraSpace} >remove Extra space</button>
+<button  disabled ={text.length===0} className="btn btn-primary mx-1 my-2 col-md-2" onClick={ForUpperCase} >convert to upper case</button>
+<button disabled ={text.length===0}  className="btn btn-primary mx-1 my-2 col-md-2" onClick={ForLowerCase} >convert to lower case</button>
+<button disabled ={text.length===0}  className="btn btn-primary  mx-1 my-2 col-md-2" onClick={ForClear} >Clear</button>
+<button  disabled ={text.length===0} className="btn btn-primary mx-1 my-2 col-md-2" onClick={handlecopy} >Copy</button>
+<button disabled ={text.length===0}  className="btn btn-primary mx-1 my-2 col-md-2" onClick={ExtraSpace} >remove Extra space</button>
 </div>
 <div className={`container my-3 text-${props.darkmode === 'light'?'dark':'light'}`}>
     <h1>Your text summanry</h1>
-    <p>{text.length === 0? '0':text.split(" ").length} words and {text.length} characters</p>
+    <p>{text.length === 0? '0':text.split(" ").filter((ele)=>{return ele.length!==0 }).length} words and {text.length} characters</p>
     <p> it can be read in {0.008 * text.split(" ").length}  </p>
 </div>
 <div className="container">

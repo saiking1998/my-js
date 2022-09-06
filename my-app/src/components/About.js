@@ -1,10 +1,10 @@
-import React ,{useState}from 'react'
+import React from 'react'
 
 export default function About(props) {
-    let [myStyle ,setmyStyle] = useState({
+    let myStyle = {
         color:"black",
         backgroundColor: 'white'
-    })
+    }
     // const EnableDarkMode =() =>{
     //     var test = document.getElementById('dark-button');
     //     if(test.classList.contains('btn-dark')){
