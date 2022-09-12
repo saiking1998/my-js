@@ -17,12 +17,13 @@ export class NewsComponent extends Component {
     }
     async componentDidMount(){
       setTimeout(async() => {
-        this.setState({loading:false})
-        let url = `https://newsapi.org/v2/everything?q=tesla&from=2022-08-12&sortBy=publishedAt&apiKey=8afb1c6f62d949a799a289a77c2d3985&page=${this.page}&pagesize=20`
+        
+        let url = `https://newsapi.org/v2/everything?q=tesla&from=2022-08-12&sortBy=publishedAt&apiKey=8afb1c6f62d949a799a289a77c2d3985&page=${this.page}&pagesize=6`
         let data = await fetch(url)
          let parseddata = await data.json()
          
          this.setState({articals:parseddata.articles,total:parseddata.totalResults})
+         this.setState({loading:false})
       }, 2000);
      
     }
@@ -38,19 +39,20 @@ export class NewsComponent extends Component {
       this.setState({loading:true})
       this.setState({articals:[]})
       setTimeout(async () => {
-        this.setState({loading:false})
-        let url = `https://newsapi.org/v2/everything?q=tesla&from=2022-08-12&sortBy=publishedAt&apiKey=8afb1c6f62d949a799a289a77c2d3985&page=${this.state.page}&pagesize=20`
+        
+        let url = `https://newsapi.org/v2/everything?q=tesla&from=2022-08-12&sortBy=publishedAt&apiKey=8afb1c6f62d949a799a289a77c2d3985&page=${this.state.page}&pagesize=6`
         let data = await fetch(url)
          let parseddata = await data.json()
          
          this.setState({articals:parseddata.articles})
+         this.setState({loading:false})
       }, 2000);
      
       
     }
     const nextpage=async() =>{
      
-      if(this.state.page > Math.ceil(this.state.total/20))
+      if(this.state.page > Math.ceil(this.state.total/6))
       {
         window.alert("you red all the news")
       }
@@ -61,12 +63,12 @@ export class NewsComponent extends Component {
           articals :[]
         })
         setTimeout(async() => {
-          this.setState({loading:false})
-          let url = `https://newsapi.org/v2/everything?q=tesla&from=2022-08-12&sortBy=publishedAt&apiKey=8afb1c6f62d949a799a289a77c2d3985&page=${this.state.page}&pagesize=20`
+          
+          let url = `https://newsapi.org/v2/everything?q=tesla&from=2022-08-12&sortBy=publishedAt&apiKey=8afb1c6f62d949a799a289a77c2d3985&page=${this.state.page}&pagesize=6`
       let data = await fetch(url)
        let parseddata = await data.json()
-       
        this.setState({articals:parseddata.articles})
+       this.setState({loading:false})
         }, 2000);
       
      }
