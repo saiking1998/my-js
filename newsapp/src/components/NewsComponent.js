@@ -18,7 +18,7 @@ export class NewsComponent extends Component {
     async componentDidMount(){
       setTimeout(async() => {
         
-        let url = `https://newsapi.org/v2/everything?q=tesla&from=2022-08-12&sortBy=publishedAt&apiKey=8afb1c6f62d949a799a289a77c2d3985&page=${this.page}&pagesize=6`
+        let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.content}&apiKey=8afb1c6f62d949a799a289a77c2d3985&page=${this.state.page}&pagesize=${this.props.pagesize}`
         let data = await fetch(url)
          let parseddata = await data.json()
          
@@ -40,7 +40,7 @@ export class NewsComponent extends Component {
       this.setState({articals:[]})
       setTimeout(async () => {
         
-        let url = `https://newsapi.org/v2/everything?q=tesla&from=2022-08-12&sortBy=publishedAt&apiKey=8afb1c6f62d949a799a289a77c2d3985&page=${this.state.page}&pagesize=6`
+        let url =`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.content}&apiKey=8afb1c6f62d949a799a289a77c2d3985&page=${this.state.page}&pagesize=${this.props.pagesize}`
         let data = await fetch(url)
          let parseddata = await data.json()
          
@@ -64,7 +64,7 @@ export class NewsComponent extends Component {
         })
         setTimeout(async() => {
           
-          let url = `https://newsapi.org/v2/everything?q=tesla&from=2022-08-12&sortBy=publishedAt&apiKey=8afb1c6f62d949a799a289a77c2d3985&page=${this.state.page}&pagesize=6`
+          let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.content}&apiKey=8afb1c6f62d949a799a289a77c2d3985&page=${this.state.page}&pagesize=${this.props.pagesize}`
       let data = await fetch(url)
        let parseddata = await data.json()
        this.setState({articals:parseddata.articles})
