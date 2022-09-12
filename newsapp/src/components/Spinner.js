@@ -3,7 +3,7 @@ import Gif from './loading.gif'
 function spinner() {
   return (
     <div className='text-center'>
-      <img src={Gif} alt="Gif" />
+      <img src={Gif} alt="no gif found" />
     </div>
   )
 }

@@ -11,16 +11,20 @@ export class NewsComponent extends Component {
         
         this.state= {
              articals :this.articals,
-             loading:false,
+             loading:true,
              page:1
         }
     }
     async componentDidMount(){
-      let url = `https://newsapi.org/v2/everything?q=tesla&from=2022-08-12&sortBy=publishedAt&apiKey=8afb1c6f62d949a799a289a77c2d3985&page=${this.page}&pagesize=20`
-      let data = await fetch(url)
-       let parseddata = await data.json()
-       
-       this.setState({articals:parseddata.articles,total:parseddata.totalResults})
+      setTimeout(async() => {
+        this.setState({loading:false})
+        let url = `https://newsapi.org/v2/everything?q=tesla&from=2022-08-12&sortBy=publishedAt&apiKey=8afb1c6f62d949a799a289a77c2d3985&page=${this.page}&pagesize=20`
+        let data = await fetch(url)
+         let parseddata = await data.json()
+         
+         this.setState({articals:parseddata.articles,total:parseddata.totalResults})
+      }, 2000);
+     
     }
    
 
@@ -31,11 +35,17 @@ export class NewsComponent extends Component {
       this.setState({
         page : this.state.page -1
       })
-      let url = `https://newsapi.org/v2/everything?q=tesla&from=2022-08-12&sortBy=publishedAt&apiKey=8afb1c6f62d949a799a289a77c2d3985&page=${this.state.page}&pagesize=20`
-      let data = await fetch(url)
-       let parseddata = await data.json()
-       
-       this.setState({articals:parseddata.articles})
+      this.setState({loading:true})
+      this.setState({articals:[]})
+      setTimeout(async () => {
+        this.setState({loading:false})
+        let url = `https://newsapi.org/v2/everything?q=tesla&from=2022-08-12&sortBy=publishedAt&apiKey=8afb1c6f62d949a799a289a77c2d3985&page=${this.state.page}&pagesize=20`
+        let data = await fetch(url)
+         let parseddata = await data.json()
+         
+         this.setState({articals:parseddata.articles})
+      }, 2000);
+     
       
     }
     const nextpage=async() =>{
@@ -46,13 +56,19 @@ export class NewsComponent extends Component {
       }
       else{
         this.setState({
-          page : this.state.page +1
+          page : this.state.page +1,
+          loading:true,
+          articals :[]
         })
-      let url = `https://newsapi.org/v2/everything?q=tesla&from=2022-08-12&sortBy=publishedAt&apiKey=8afb1c6f62d949a799a289a77c2d3985&page=${this.state.page}&pagesize=20`
+        setTimeout(async() => {
+          this.setState({loading:false})
+          let url = `https://newsapi.org/v2/everything?q=tesla&from=2022-08-12&sortBy=publishedAt&apiKey=8afb1c6f62d949a799a289a77c2d3985&page=${this.state.page}&pagesize=20`
       let data = await fetch(url)
        let parseddata = await data.json()
        
        this.setState({articals:parseddata.articles})
+        }, 2000);
+      
      }
     }
     return (
@@ -61,7 +77,7 @@ export class NewsComponent extends Component {
       
         
         <h1>News-baba news</h1>
-         <Spinner/>
+         {this.state.loading && <Spinner/>}
 
         <div className="row">
         {this.state.articals.map((ele)=>{
