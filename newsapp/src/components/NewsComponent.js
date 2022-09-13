@@ -85,7 +85,7 @@ export class NewsComponent extends Component {
         {this.state.articals?.map((ele)=>{
             return(
                 <div className="col-md-4" key={ele.url} >
-                <NewsItemComponenet title = {ele.title?ele.title.slice(0,45):""} discription={ele.description?ele.description.slice(0,86):""} imageurl={ele.urlToImage?ele.urlToImage:"https://t4.ftcdn.net/jpg/02/51/95/53/360_F_251955356_FAQH0U1y1TZw3ZcdPGybwUkH90a3VAhb.jpg"} url={ele.url}/>
+                <NewsItemComponenet date = {ele.publishedAt} author={ele.author? ele.author:"unknown"} title = {ele.title?ele.title.slice(0,45):""} discription={ele.description?ele.description.slice(0,86):""} imageurl={ele.urlToImage?ele.urlToImage:"https://t4.ftcdn.net/jpg/02/51/95/53/360_F_251955356_FAQH0U1y1TZw3ZcdPGybwUkH90a3VAhb.jpg"} url={ele.url}/>
                  </div>
             );
 
