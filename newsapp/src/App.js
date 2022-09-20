@@ -14,13 +14,7 @@ function App () {
   const pageSize =6;
   const  apiKey = process.env.REACT_APP_NEWS_API
 
-  // state = {
-  //   progress:0
-  // }
-
-  // setProgress = (progress)=>{
-  //   this.setState({progress: progress})
-  // }
+ 
     let [Progress ,setProgress ] = useState(0)
     return (
       <div>
