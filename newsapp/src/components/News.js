@@ -10,7 +10,7 @@ const News = (props)=>{
     const [loading, setLoading] = useState(true)
     const [page, setPage] = useState(1)
     const [totalResults, setTotalResults] = useState(0)
-    // document.title = `${capitalizeFirstLetter(props.category)} - NewsMonkey`;
+    
     
     const capitalizeFirstLetter = (string) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
@@ -18,7 +18,7 @@ const News = (props)=>{
 
     const updateNews = async ()=> {
         props.setProgress(10);
-        const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${props.pageSize}`; 
+        const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.content}&apiKey=${props.apiKey}&page=${page}&pageSize=${props.pageSize}`; 
         setLoading(true)
         let data = await fetch(url);
         props.setProgress(30);
@@ -31,12 +31,12 @@ const News = (props)=>{
 
     }
 
-    useEffect(() => {
+    useEffect( () => {
         updateNews(); 
-    }, [])
+    }, [])  // eslint-disable-line react-hooks/exhaustive-deps
  
 
-    const handlePrevClick = async () => {
+    /*const handlePrevClick = async () => {
         setPage(page-1)
         updateNews();
     }
@@ -44,11 +44,11 @@ const News = (props)=>{
     const handleNextClick = async () => { 
         setPage(page+1)
         updateNews()
-    }
+    }*/
 
     const fetchMoreData = async () => {   
         setPage(page+1) 
-        const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${props.pageSize}`;
+        const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.content}&apiKey=${props.apiKey}&page=${page}&pageSize=${props.pageSize}`;
         let data = await fetch(url);
         let parsedData = await data.json()
         setArticles(articles.concat(parsedData.articles))
