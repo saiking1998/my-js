@@ -1,0 +1,12 @@
+{
+    "java.project.sourcePaths": ["src"],
+    "java.project.outputPath": "bin",
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "c:\\Users\\sai_chopparapu\\Downloads\\Jace (1).jar",
+        "c:\\Users\\sai_chopparapu\\Downloads\\xlxpScannerUtils (1).jar",
+        "c:\\Users\\sai_chopparapu\\Downloads\\xlxpScanner (1).jar",
+        "c:\\Users\\sai_chopparapu\\Downloads\\stax-api (1).jar",
+        "c:\\Users\\sai_chopparapu\\Downloads\\log4j-1.2.14.jar"
+    ]
+}

@@ -1,0 +1,1 @@
+var docele = document.getElementById('')
